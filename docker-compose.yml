@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   node:
-    container_name: facade-node
+    container_name: block-explorer-node
     restart: always
     build:
       context: .

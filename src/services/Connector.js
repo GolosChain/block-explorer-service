@@ -28,12 +28,20 @@ class Connector extends BasicConnector {
                     handler: blocks.getBlockList,
                     scope: blocks,
                 },
+                'blocks.getBlock': {
+                    handler: blocks.getBlock,
+                    scope: blocks,
+                },
                 'blocks.getBlockTransactions': {
                     handler: blocks.getBlockTransactions,
                     scope: blocks,
                 },
                 'blocks.getTransaction': {
                     handler: blocks.getTransaction,
+                    scope: blocks,
+                },
+                'blocks.findEntity': {
+                    handler: blocks.findEntity,
                     scope: blocks,
                 },
 
