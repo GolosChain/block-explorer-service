@@ -44,6 +44,10 @@ class Connector extends BasicConnector {
                     handler: blocks.findEntity,
                     scope: blocks,
                 },
+                'blocks.getBlockChainInfo': {
+                    handler: blocks.getBlockChainInfo,
+                    scope: blocks,
+                },
 
                 /* inner services only points */
                 transfer: {

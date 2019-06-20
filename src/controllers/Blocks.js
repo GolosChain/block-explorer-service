@@ -21,6 +21,10 @@ class Blocks extends BasicController {
     async findEntity({ params }) {
         return this.callService('blocks', 'findEntity', params);
     }
+
+    async getBlockChainInfo({ params }) {
+        return this.callService('blocks', 'getBlockChainInfo', params);
+    }
 }
 
 module.exports = Blocks;
