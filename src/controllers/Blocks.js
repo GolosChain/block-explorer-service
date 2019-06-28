@@ -25,6 +25,10 @@ class Blocks extends BasicController {
     async getBlockChainInfo({ params }) {
         return this.callService('blocks', 'getBlockChainInfo', params);
     }
+
+    async getLastHourGraph({ params }) {
+        return this.callService('blocks', 'getLastHourGraph', params);
+    }
 }
 
 module.exports = Blocks;
