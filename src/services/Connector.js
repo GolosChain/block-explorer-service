@@ -48,6 +48,10 @@ class Connector extends BasicConnector {
                     handler: blocks.getBlockChainInfo,
                     scope: blocks,
                 },
+                'blocks.getAccount': {
+                    handler: blocks.getAccount,
+                    scope: blocks,
+                },
                 'blocks.getAccountTransactions': {
                     handler: blocks.getAccountTransactions,
                     scope: blocks,
