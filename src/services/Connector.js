@@ -64,6 +64,10 @@ class Connector extends BasicConnector {
                     handler: blocks.getLastHourGraph,
                     scope: blocks,
                 },
+                'chain.getProducers': {
+                    handler: blocks.getProducers,
+                    scope: blocks,
+                },
 
                 /* inner services only points */
                 transfer: {

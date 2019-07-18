@@ -41,6 +41,10 @@ class Blocks extends BasicController {
     async getLastHourGraph({ params }) {
         return this.callService('blocks', 'getLastHourGraph', params);
     }
+
+    async getProducers({ params }) {
+        return this.callService('blocks', 'getProducers', params);
+    }
 }
 
 module.exports = Blocks;
