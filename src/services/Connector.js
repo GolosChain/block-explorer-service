@@ -68,6 +68,10 @@ class Connector extends BasicConnector {
                     handler: blocks.getProducers,
                     scope: blocks,
                 },
+                'chain.getValidators': {
+                    handler: blocks.getValidators,
+                    scope: blocks,
+                },
 
                 /* inner services only points */
                 transfer: {
