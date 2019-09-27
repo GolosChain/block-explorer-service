@@ -1,9 +1,10 @@
-const core = require('gls-core-service');
+const core = require('cyberway-core-service');
 const BasicConnector = core.services.Connector;
 const env = require('../data/env');
 
 const Transfer = require('../controllers/Transfer');
 const Blocks = require('../controllers/Blocks');
+const StateReader = require('../controllers/StateReader');
 
 class Connector extends BasicConnector {
     constructor() {
@@ -15,11 +16,13 @@ class Connector extends BasicConnector {
 
         this._transfer = new Transfer(params);
         this._blocks = new Blocks(params);
+        this._stateReader = new StateReader(params);
     }
 
     async start() {
         const transfer = this._transfer;
         const blocks = this._blocks;
+        const stateReader = this._stateReader;
 
         await super.start({
             serverRoutes: {
@@ -73,6 +76,31 @@ class Connector extends BasicConnector {
                     scope: blocks,
                 },
 
+                'stateReader.getTokens': {
+                    handler: stateReader.getTokens,
+                    scope: stateReader,
+                },
+                'stateReader.getDelegations': {
+                    handler: stateReader.getDelegations,
+                    scope: stateReader,
+                },
+                'stateReader.getValidators': {
+                    handler: stateReader.getValidators,
+                    scope: stateReader,
+                },
+                'stateReader.getLeaders': {
+                    handler: stateReader.getLeaders,
+                    scope: stateReader,
+                },
+                'stateReader.getNameBids': {
+                    handler: stateReader.getNameBids,
+                    scope: stateReader,
+                },
+                'stateReader.getLastClosedBid': {
+                    handler: stateReader.getLastClosedBid,
+                    scope: stateReader,
+                },
+
                 /* inner services only points */
                 transfer: {
                     handler: transfer.handle,
@@ -82,6 +110,7 @@ class Connector extends BasicConnector {
             requiredClients: {
                 frontend: env.GLS_FRONTEND_GATE_CONNECT,
                 blocks: env.GLS_BLOCKS_CONNECT,
+                stateReader: env.GLS_STATE_READER_CONNECT,
             },
         });
     }
