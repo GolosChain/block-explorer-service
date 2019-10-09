@@ -75,9 +75,29 @@ class Connector extends BasicConnector {
                     handler: blocks.getValidators,
                     scope: blocks,
                 },
+                'chain.getTokensExt': {
+                    handler: blocks.getTokensExt,
+                    scope: blocks,
+                },
 
                 'stateReader.getTokens': {
                     handler: stateReader.getTokens,
+                    scope: stateReader,
+                },
+                'stateReader.getBalances': {
+                    handler: stateReader.getBalances,
+                    scope: stateReader,
+                },
+                'stateReader.getTopBalances': {
+                    handler: stateReader.getTopBalances,
+                    scope: stateReader,
+                },
+                'stateReader.getUsernames': {
+                    handler: stateReader.getUsernames,
+                    scope: stateReader,
+                },
+                'stateReader.getReceivedGrants': {
+                    handler: stateReader.getReceivedGrants,
                     scope: stateReader,
                 },
                 'stateReader.getDelegations': {

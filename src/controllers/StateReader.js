@@ -10,6 +10,18 @@ class StateReader extends Basic {
         return await this._call('getTokens', params);
     }
 
+    async getBalances({ params }) {
+        return await this._call('getBalances', params);
+    }
+
+    async getTopBalances({ params }) {
+        return await this._call('getTopBalances', params);
+    }
+
+    async getUsernames({ params }) {
+        return await this._call('getUsernames', params);
+    }
+
     async getReceivedGrants({ params }) {
         return await this._call('getReceivedGrants', params);
     }

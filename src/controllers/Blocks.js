@@ -49,6 +49,9 @@ class Blocks extends BasicController {
     async getValidators({ params }) {
         return this.callService('blocks', 'getValidators', params);
     }
+    async getTokensExt({ params }) {
+        return this.callService('blocks', 'getTokensExt', params);
+    }
 }
 
 module.exports = Blocks;
