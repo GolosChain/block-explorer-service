@@ -120,6 +120,14 @@ class Connector extends BasicConnector {
                     handler: stateReader.getLastClosedBid,
                     scope: stateReader,
                 },
+                'stateReader.getProposals': {
+                    handler: stateReader.getProposals,
+                    scope: stateReader,
+                },
+                'stateReader.getProposalApprovals': {
+                    handler: stateReader.getProposalApprovals,
+                    scope: stateReader,
+                },
 
                 /* inner services only points */
                 transfer: {
