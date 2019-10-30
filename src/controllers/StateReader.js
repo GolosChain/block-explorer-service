@@ -45,6 +45,14 @@ class StateReader extends Basic {
     async getLastClosedBid({ params }) {
         return await this._call('getLastClosedBid', params);
     }
+
+    async getProposals({ params }) {
+        return await this._call('getProposals', params);
+    }
+
+    async getProposalApprovals({ params }) {
+        return await this._call('getProposalApprovals', params);
+    }
 }
 
 module.exports = StateReader;
