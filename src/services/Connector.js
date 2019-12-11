@@ -147,11 +147,9 @@ class Connector extends BasicConnector {
                     handler: this._facade.getVersions,
                     scope: this._facade,
                 },
-                getVersion: {
-                    handler: () => ({
-                        version: process.env.npm_package_version,
-                    }),
-                },
+                getVersion: () => ({
+                    version: process.env.npm_package_version,
+                }),
 
                 /* inner services only points */
                 transfer: {

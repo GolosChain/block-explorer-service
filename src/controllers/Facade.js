@@ -9,8 +9,8 @@ class Facade extends Basic {
     async getVersions() {
         const method = 'getVersion';
         const [state, blocks] = await Promise.all([
-            this.callService('stateReader', method, {}).catch(e => e),
-            this.callService('blocks', method, {}).catch(e => e),
+            this.callService('stateReader', method, {}).catch(() => ({})), // catch to prevent whole promise fail
+            this.callService('blocks', method, {}).catch(() => ({})),
         ]);
         return {
             facade: process.env.npm_package_version,
