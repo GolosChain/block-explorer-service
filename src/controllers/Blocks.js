@@ -26,6 +26,10 @@ class Blocks extends BasicController {
         return this.callService('blocks', 'getBlockChainInfo', params);
     }
 
+    async getProposal({ params }) {
+        return this.callService('blocks', 'getProposal', params);
+    }
+
     async getProposals({ params }) {
         return this.callService('blocks', 'getProposals', params);
     }
