@@ -5,6 +5,7 @@ const env = require('../data/env');
 const Transfer = require('../controllers/Transfer');
 const Blocks = require('../controllers/Blocks');
 const StateReader = require('../controllers/StateReader');
+const Facade = require('../controllers/Facade');
 
 class Connector extends BasicConnector {
     constructor() {
@@ -17,6 +18,7 @@ class Connector extends BasicConnector {
         this._transfer = new Transfer(params);
         this._blocks = new Blocks(params);
         this._stateReader = new StateReader(params);
+        this._facade = new Facade(params);
     }
 
     async start() {
@@ -49,6 +51,10 @@ class Connector extends BasicConnector {
                 },
                 'blocks.getBlockChainInfo': {
                     handler: blocks.getBlockChainInfo,
+                    scope: blocks,
+                },
+                'accounts.getProposal': {
+                    handler: blocks.getProposal,
                     scope: blocks,
                 },
                 'accounts.getProposals': {
@@ -96,6 +102,14 @@ class Connector extends BasicConnector {
                     handler: stateReader.getUsernames,
                     scope: stateReader,
                 },
+                'stateReader.getStakeAgents': {
+                    handler: stateReader.getStakeAgents,
+                    scope: stateReader,
+                },
+                'stateReader.getStakeStat': {
+                    handler: stateReader.getStakeStat,
+                    scope: stateReader,
+                },
                 'stateReader.getReceivedGrants': {
                     handler: stateReader.getReceivedGrants,
                     scope: stateReader,
@@ -128,6 +142,14 @@ class Connector extends BasicConnector {
                     handler: stateReader.getProposalApprovals,
                     scope: stateReader,
                 },
+
+                getVersions: {
+                    handler: this._facade.getVersions,
+                    scope: this._facade,
+                },
+                getVersion: () => ({
+                    version: process.env.npm_package_version,
+                }),
 
                 /* inner services only points */
                 transfer: {
